@@ -24,7 +24,7 @@ const NewPost = (props:NewPostProps) => {
     try {
       if(formData.portfolioLink){
         await handlePost(formData)
-        navigate('')
+        navigate('/')
       }
     } catch (error) {
       console.log(error)

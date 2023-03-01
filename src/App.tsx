@@ -25,6 +25,7 @@ import './App.css'
 import { User, Profile,Post} from './types/models'
 import NewPost from './pages/NewPost/NewPost'
 import { NewPostForm } from './types/forms'
+import HomePage from './pages/HomePage/HomePage'
 
 
 function App(): JSX.Element {
@@ -105,6 +106,12 @@ useEffect(():void=>{
         <Route
           path="/login"
           element={<Login handleAuthEvt={handleAuthEvt} />}
+        />
+        <Route
+        path="/home"
+        element={<ProtectedRoute user={user}>
+          <HomePage profile={profile} posts={posts}/>
+        </ProtectedRoute>}
         />
         <Route
           path="/profiles"

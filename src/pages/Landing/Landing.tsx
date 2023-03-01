@@ -3,6 +3,7 @@ import styles from './Landing.module.css'
 
 // types
 import { User } from '../../types/models'
+import PostFeed from '../../components/PostFeed/PostFeed';
 
 interface LandingProps {
   user: User | null;

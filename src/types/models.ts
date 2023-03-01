@@ -1,7 +1,7 @@
 /* ---------===== custom props ====--------- */
 
 export interface Post{
-  portfolioUrl:string;
+  portfolioLink:string;
   caption?:string;
   author:number;
   id:number;
