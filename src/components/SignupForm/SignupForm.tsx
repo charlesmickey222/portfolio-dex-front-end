@@ -45,7 +45,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       await authService.signup(formData, photoData)
       handleAuthEvt()
       const idParam = formData.name.replaceAll(' ', '+')
-      navigate(`/profiles/${idParam}`)
+      navigate('/')
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)

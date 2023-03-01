@@ -1,6 +1,13 @@
 /* ---------===== custom props ====--------- */
 
-
+export interface Post{
+  portfolioUrl:string;
+  caption?:string;
+  author:number;
+  id:number;
+  createdAt:string;
+  updatedAt:string;
+}
 
 /* ---------===== auth models =====--------- */
 

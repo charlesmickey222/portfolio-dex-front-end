@@ -27,7 +27,16 @@ async function getProfileByName(username:string):Promise<Profile>{
     throw error
   }
 }
-
+async function getProfileById(profileId:number):Promise<Profile> {
+  try {
+    const res = await fetch(`${BASE_URL}/id-search/${profileId}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json() as Profile
+  } catch (error) {
+    throw error
+  }
+}
 async function addPhoto(
   photoData: FormData, 
   profileId: number
@@ -64,4 +73,4 @@ async function addPortfolioLink(
   }
 }
 
-export { getAllProfiles, addPhoto, addPortfolioLink }
+export { getAllProfiles, addPhoto, addPortfolioLink, getProfileByName, getProfileById  }
