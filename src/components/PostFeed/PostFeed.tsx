@@ -3,13 +3,14 @@ import PostPreview from "../Post/PostPreview";
 interface PostFeedProps {
   posts:Post[];
   profiles:Profile[];
+  profile:Profile|null;
 }
 const PostFeed = (props:PostFeedProps) => {
-  const { posts,profiles } = props
+  const { posts,profiles,profile } = props
   return ( 
   <div className="feed">
     {posts.map((post:Post)=>
-      <PostPreview key={post.id} profiles={profiles} author={profiles[post.author-1]} post={post} />
+      <PostPreview key={post.id} profiles={profiles} profile={profile} author={profiles[post.author-1]} post={post} />
     )}
     
   </div> );

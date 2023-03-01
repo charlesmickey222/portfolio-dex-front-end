@@ -9,7 +9,7 @@ const HomePage = (props:HomePageProps) => {
   const {profile,posts, profiles} = props
   return ( 
   <>
-  <PostFeed profiles={profiles} posts={posts}/>
+  <PostFeed profiles={profiles} profile={profile} posts={posts}/>
   </> );
 }
 
