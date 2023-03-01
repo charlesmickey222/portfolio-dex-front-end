@@ -26,6 +26,7 @@ import { User, Profile,Post} from './types/models'
 import NewPost from './pages/NewPost/NewPost'
 import { NewPostForm } from './types/forms'
 import HomePage from './pages/HomePage/HomePage'
+import PostDetailsPage from './pages/PostDetailsPage/PostDetailsPage'
 
 
 function App(): JSX.Element {
@@ -110,7 +111,7 @@ useEffect(():void=>{
         <Route
         path="/home"
         element={<ProtectedRoute user={user}>
-          <HomePage profile={profile} posts={posts}/>
+          <HomePage profile={profile} profiles={profiles} posts={posts}/>
         </ProtectedRoute>}
         />
         <Route
@@ -138,13 +139,22 @@ useEffect(():void=>{
         }
         />
         <Route 
-        path='/new-post'
+        path="/new-post"
         element={
           <ProtectedRoute user={user}>
             <NewPost handlePost={handlePost} profile={profile?profile:null} />
           </ProtectedRoute>
         }
         />
+        <Route
+        path="/posts/:id"
+        element={
+          <ProtectedRoute user={user}>
+            <PostDetailsPage />
+          </ProtectedRoute>
+        }
+        />
+
       </Routes>
     </>
   )
