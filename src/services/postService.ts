@@ -58,9 +58,21 @@ async function getPostsByAuthor(profileId:number):Promise<Post[]>{
   }
 }
 
+async function deletePost(postId:number){
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}`,{
+      method:'DELETE',
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+  } catch (error) {
+    throw error
+  }
+}
+
 export  {
   createPost, 
   getPosts,
   addCommentToPost,
   getPostsByAuthor,
+  deletePost
 }
