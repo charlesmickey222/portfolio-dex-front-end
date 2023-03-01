@@ -1,0 +1,19 @@
+ul{
+  display: flex;
+  list-style: none;
+  margin:0 auto;
+}
+li{
+  display:inline-flexbox;
+  padding:10px;
+}
+.navButton{
+  text-decoration: none;
+  border:2px solid black;
+  padding:2px;
+  border-radius: 3px;
+  color:rgba(165, 42, 42, 0.584);
+}
+nav{
+  background-color: antiquewhite;
+}

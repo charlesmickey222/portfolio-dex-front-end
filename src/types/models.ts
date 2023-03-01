@@ -4,6 +4,16 @@ export interface Post{
   portfolioLink:string;
   caption?:string;
   author:number;
+  comments?:Comment[];
+  id:number;
+  createdAt:string;
+  updatedAt:string;
+}
+
+export interface Comment{
+  content:string;
+  commentAuthor:number;
+  postedUnder:number;
   id:number;
   createdAt:string;
   updatedAt:string;

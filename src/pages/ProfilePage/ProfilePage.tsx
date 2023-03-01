@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { User,Profile } from "../../types/models";
+import { User,Profile,Post } from "../../types/models";
 import { Link } from "react-router-dom";
 import { PortfolioLinkData } from "../../types/forms";
+import * as postService from '../../services/postService'
+import PostPreview from "../../components/Post/PostPreview";
 interface ProfilePageProps {
   user:User|null;
 }
@@ -11,7 +13,6 @@ const ProfilePage = (props:ProfilePageProps) => {
   const location = useLocation()
   const [profile,setProfile]=useState<Profile>(location.state.profile)
   const [ownsProfile,setOwnsProfile]=useState<Boolean>(false)
-  const [portfolioLinkData,setPortfolioLinkData] = useState<PortfolioLinkData>()
   useEffect(()=>{
     if(user){
       if (user.profile.id === profile.id){
@@ -19,18 +20,6 @@ const ProfilePage = (props:ProfilePageProps) => {
       }
     }
   })
-  const handleChange = (evt:React.ChangeEvent<HTMLInputElement>)=>{
-    setPortfolioLinkData({...portfolioLinkData, ['portfolioLink']:evt.target.value})
-  }
-
-  const handleSubmit = async(evt:React.FormEvent)=>{
-    evt.preventDefault()
-    try {
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
   if(!profile) return <h1>Loading Profile</h1>

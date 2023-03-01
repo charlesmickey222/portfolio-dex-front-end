@@ -4,6 +4,10 @@ export interface NewPostForm {
   caption:string;
 }
 
+export interface NewCommentFormData {
+  content:string;
+}
+
 
 /* ---------===== auth forms =====--------- */
 

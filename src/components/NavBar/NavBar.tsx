@@ -1,6 +1,6 @@
 // npm modules
 import { Link, NavLink } from 'react-router-dom'
-
+import './NavBar.css'
 // types
 import { User,Profile } from '../../types/models'
 
@@ -16,16 +16,16 @@ const NavBar = (props: NavBarProps): JSX.Element => {
     <nav>
       {user ?
         <ul>
-          <li><NavLink to="/home">Home</NavLink></li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="/change-password">Change Password</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/new-post">post</NavLink></li>
+          <li><NavLink className='navButton' to="/home">Home</NavLink></li>
+          <li><NavLink className='navButton' to="/profiles">Profiles</NavLink></li>
+          <li><NavLink className='navButton' to="/change-password">Change Password</NavLink></li>
+          <li><NavLink className='navButton' to="" onClick={handleLogout}>LOG OUT</NavLink></li>
+          <li><NavLink className='navButton' to="/new-post">post</NavLink></li>
         </ul>
       :
         <ul>
-          <li><NavLink to="/login">Log In</NavLink></li>
-          <li><NavLink to="/signup">Sign Up</NavLink></li>
+          <li><NavLink className='navButton' to="/login">Log In</NavLink></li>
+          <li><NavLink className='navButton' to="/signup">Sign Up</NavLink></li>
         </ul>
       }
     </nav>

@@ -1,4 +1,4 @@
-import { NewPostForm } from '../types/forms'
+import { NewCommentFormData, NewPostForm } from '../types/forms'
 import * as tokenService from './tokenService'
 import { Profile,Post } from '../types/models'
 
@@ -31,6 +31,36 @@ async function getPosts():Promise<Post[]>{
   
 }
 
+async function addCommentToPost(formData:NewCommentFormData, postId:number):Promise<Post>{
+  try {
+    const res = await fetch(`${BASE_URL}/${postId}`,{
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+      body: JSON.stringify(formData),
+    })
+    return await res.json() as Post
+  } catch (error) {
+    throw error
+  }
+}
+
+async function getPostsByAuthor(profileId:number):Promise<Post[]>{
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+    })
+    return await res.json() as Post[]
+  } catch (error) {
+    throw error
+  }
+}
+
 export  {
-  createPost, getPosts
+  createPost, 
+  getPosts,
+  addCommentToPost,
+  getPostsByAuthor,
 }

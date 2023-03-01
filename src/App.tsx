@@ -24,7 +24,7 @@ import './App.css'
 // types
 import { User, Profile,Post} from './types/models'
 import NewPost from './pages/NewPost/NewPost'
-import { NewPostForm } from './types/forms'
+import { NewCommentFormData, NewPostForm } from './types/forms'
 import HomePage from './pages/HomePage/HomePage'
 import PostDetailsPage from './pages/PostDetailsPage/PostDetailsPage'
 
@@ -36,6 +36,7 @@ function App(): JSX.Element {
   const [profiles,setProfiles] = useState<Profile[]>([])
   const [profile,setProfile]=useState<Profile|null>(null)
   const [posts,setPosts] = useState<Post[]>([])
+  
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)
@@ -48,6 +49,18 @@ function App(): JSX.Element {
       setProfiles(profiles.map((profile) => (
         profile.id === newProfile.id ?newProfile:profile
       )))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleComment = async(formData:NewCommentFormData, postId:number):Promise<void>=>{
+    try {
+      const newPost = await postsService.addCommentToPost(formData, postId)
+      setPosts(posts.map((post)=>
+        post.id === newPost.id ?newPost:post
+      ))
+      navigate('/home')
     } catch (error) {
       console.log(error)
     }
@@ -150,7 +163,7 @@ useEffect(():void=>{
         path="/posts/:id"
         element={
           <ProtectedRoute user={user}>
-            <PostDetailsPage />
+            <PostDetailsPage handleComment={handleComment}/>
           </ProtectedRoute>
         }
         />
