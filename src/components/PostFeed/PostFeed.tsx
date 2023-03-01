@@ -1,4 +1,5 @@
 import { Post,Profile } from "../../types/models";
+import PostPreview from "../Post/PostPreview";
 interface PostFeedProps {
   posts:Post[];
 }
@@ -7,7 +8,7 @@ const PostFeed = (props:PostFeedProps) => {
   return ( 
   <div className="postContainer">
     {posts.map((post:Post)=>
-      <h1 key={post.id}>{post.portfolioLink}</h1>
+      <PostPreview key={post.id} post={post} />
     )}
     
   </div> );

@@ -33,7 +33,7 @@ function App(): JSX.Element {
   
   const [user, setUser] = useState<User | null>(authService.getUser())
   const [profiles,setProfiles] = useState<Profile[]>([])
-  const [profile,setProfile]=useState<Profile>()
+  const [profile,setProfile]=useState<Profile|null>(null)
   const [posts,setPosts] = useState<Post[]>([])
   const handleLogout = (): void => {
     authService.logout()
@@ -81,7 +81,7 @@ useEffect(():void=>{
       console.log(error)
     }
   }
-  user ? fetchProfile():setProfile(undefined)
+  user ? fetchProfile():setProfile(null)
 },[user])
     useEffect(():void=>{
       const fetchPosts = async():Promise<void>=>{
