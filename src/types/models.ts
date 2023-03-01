@@ -7,6 +7,7 @@
 export interface Profile {
   name: string;
   photo?: string;
+  portfolioLink?:string;
   id: number;
   createdAt: string;
   updatedAt: string;

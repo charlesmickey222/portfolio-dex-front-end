@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -21,6 +22,8 @@ import './App.css'
 
 // types
 import { User } from './types/models'
+import NewPost from './pages/NewPost/NewPost'
+
 
 function App(): JSX.Element {
   const navigate = useNavigate()
@@ -65,6 +68,22 @@ function App(): JSX.Element {
               <ChangePassword handleAuthEvt={handleAuthEvt} />
             </ProtectedRoute>
           }
+        />
+        <Route 
+        path="/profiles/:id"
+        element={
+          <ProtectedRoute user={user}>
+            <ProfilePage user={user}/>
+          </ProtectedRoute>
+        }
+        />
+        <Route 
+        path='/new-post'
+        element={
+          <ProtectedRoute user={user}>
+            <NewPost/>
+          </ProtectedRoute>
+        }
         />
       </Routes>
     </>

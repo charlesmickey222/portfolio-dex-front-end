@@ -1,5 +1,8 @@
 /* ---------==== custom forms ====--------- */
-
+export interface NewPostForm {
+  portfolioLink:string;
+  caption:string;
+}
 
 
 /* ---------===== auth forms =====--------- */
@@ -14,6 +17,10 @@ export interface SignupFormData {
   email: string;
   password: string;
   passwordConf: string;
+}
+
+export interface PortfolioLinkData {
+  portfolioLink:string;
 }
 
 export interface ChangePasswordFormData {

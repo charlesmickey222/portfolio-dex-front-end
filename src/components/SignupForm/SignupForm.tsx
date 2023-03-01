@@ -44,7 +44,8 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
       setIsSubmitted(true)
       await authService.signup(formData, photoData)
       handleAuthEvt()
-      navigate('/')
+      const idParam = formData.name.replaceAll(' ', '+')
+      navigate(`/profiles/${idParam}`)
     } catch (err) {
       console.log(err)
       handleErrMsg(err, updateMessage)
@@ -52,7 +53,7 @@ const SignupForm = (props: AuthFormProps): JSX.Element => {
     }
   }
 
-  const { name, email, password, passwordConf } = formData
+  const { name, email, password, passwordConf} = formData
 
   const isFormInvalid = (): boolean => {
     return !(name && email && password && password === passwordConf)
